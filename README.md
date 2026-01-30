@@ -1,8 +1,8 @@
-# 🧮 Handwritten Mathematical Expression to LaTeX Converter
+# Handwritten Mathematical Expression to LaTeX Converter
 
 A comprehensive AI-powered system for converting handwritten mathematical expressions to LaTeX format, featuring dual conversion modes and multiple deployment options. Built for the CROHME (Competition on Recognition of Online Handwritten Mathematical Expressions) dataset.
 
-## 🎯 Features
+## Features
 
 ### Dual Conversion Modes
 
@@ -20,7 +20,7 @@ A comprehensive AI-powered system for converting handwritten mathematical expres
 
 ### Multiple User Interfaces
 
-- **Streamlit App** ⭐ (Recommended)
+- **Streamlit App** (Recommended)
   - Modern, interactive UI with drawing canvas
   - Adjustable pen size and color
   - Drag & drop file upload
@@ -38,7 +38,7 @@ A comprehensive AI-powered system for converting handwritten mathematical expres
   - Runs directly in browser
   - MathJax rendering
 
-## 🏗️ Architecture
+## Architecture
 
 ### Model Components
 
@@ -67,7 +67,7 @@ A comprehensive AI-powered system for converting handwritten mathematical expres
 - **CORS Enabled**: Cross-origin support for web apps
 - **GPU Acceleration**: CUDA support with automatic memory management
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 
@@ -96,7 +96,7 @@ docker-compose up -d
 
 The API server will be available at `http://localhost:8080`
 
-## 🚀 Usage
+## Usage
 
 ### Option 1: Streamlit App (Recommended)
 
@@ -133,7 +133,7 @@ python main.py
 
 API endpoint: `http://localhost:8000/predict`
 
-## 🔧 Configuration
+## Configuration
 
 ### Model Configuration (`config.py`)
 
@@ -156,7 +156,7 @@ max_seq_len: 256  # Maximum output length
 }
 ```
 
-## 📊 Training
+## Training
 
 ### Dataset Preparation
 
@@ -189,7 +189,7 @@ Key training parameters:
 - LoRA rank: 16
 - Training epochs: 1 (full dataset)
 
-## 🧪 Evaluation
+## Evaluation
 
 ### Running Evaluation
 
@@ -209,7 +209,7 @@ The system evaluates on:
 - Custom validation set
 - Real-world handwritten samples
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -245,7 +245,7 @@ The system evaluates on:
     └── EDA.ipynb                               # Exploratory data analysis
 ```
 
-## 🛠️ Technical Details
+## Technical Details
 
 ### Dependencies
 
@@ -288,7 +288,7 @@ The system evaluates on:
 - Gradient accumulation
 - Automatic CUDA memory management
 
-## 🐳 Docker Deployment
+## Docker Deployment
 
 ### Building the Image
 
@@ -313,7 +313,7 @@ docker run --gpus all -p 8080:8080 -v ./lora_model_qwen3vl.zip:/app/lora_model_q
 - Auto-restart on failure
 - CORS enabled for web access
 
-## 🧩 API Endpoints
+## API Endpoints
 
 ### POST `/predict`
 
@@ -347,7 +347,7 @@ Health check endpoint
 }
 ```
 
-## 📝 Examples
+## Examples
 
 ### Using the Python Client
 
@@ -383,7 +383,7 @@ print(response.json())
 4. View both modes (Latex & Label) side-by-side
 5. Copy the generated LaTeX code
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Areas for improvement:
 
@@ -393,22 +393,22 @@ Contributions are welcome! Areas for improvement:
 - Extended dataset support
 - Multi-language support
 
-## 📄 License
+## License
 
 [Add your license information here]
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - CROHME dataset creators
 - Unsloth team for efficient fine-tuning tools
 - Qwen team for the vision-language model
 - Pix2Text for OCR capabilities
 
-## 📧 Contact
+## Contact
 
 [Add contact information here]
 
-## 🔗 References
+## References
 
 - [CROHME Competition](https://www.isical.ac.in/~crohme/)
 - [Qwen3-VL Model](https://huggingface.co/Qwen)
