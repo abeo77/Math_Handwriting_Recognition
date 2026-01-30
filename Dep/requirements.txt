@@ -1,0 +1,19 @@
+# PyTorch already included in base image (pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime)
+# torch>=2.1.0
+# Pillow
+
+# Core dependencies
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+transformers
+peft
+bitsandbytes
+
+# API server
+litserve
+lightning
+fastapi
+uvicorn[standard]
+
+# Additional utilities
+einops
+timm

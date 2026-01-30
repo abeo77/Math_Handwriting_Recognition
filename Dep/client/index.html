@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to LaTeX Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📐 Image to LaTeX Converter</h1>
+            <p class="subtitle">Draw or upload mathematical expressions to convert them to LaTeX</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" data-tab="draw">✏️ Draw Expression</button>
+                <button class="tab-btn" data-tab="upload">📁 Upload Image</button>
+            </div>
+
+            <!-- Draw Tab -->
+            <div class="tab-content active" id="draw-tab">
+                <div class="canvas-container">
+                    <canvas id="drawCanvas" width="800" height="300"></canvas>
+                    <div class="canvas-controls">
+                        <button id="clearBtn" class="btn btn-secondary">🗑️ Clear Canvas</button>
+                        <label class="pen-size-label">
+                            Pen Size: <span id="penSizeValue">3</span>px
+                            <input type="range" id="penSize" min="1" max="10" value="3">
+                        </label>
+                        <label class="color-picker">
+                            Color: <input type="color" id="penColor" value="#000000">
+                        </label>
+                    </div>
+                </div>
+                <button id="convertDrawBtn" class="btn btn-primary">🚀 Convert to LaTeX</button>
+            </div>
+
+            <!-- Upload Tab -->
+            <div class="tab-content" id="upload-tab">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p>Drag & drop an image here or click to browse</p>
+                        <p class="file-types">Supported: PNG, JPG, JPEG</p>
+                    </div>
+                    <input type="file" id="imageUpload" accept="image/png,image/jpeg,image/jpg" hidden>
+                </div>
+                <div id="previewContainer" class="preview-container hidden">
+                    <img id="imagePreview" alt="Preview">
+                    <button id="removeImageBtn" class="btn btn-secondary">❌ Remove</button>
+                </div>
+                <button id="convertUploadBtn" class="btn btn-primary">🚀 Convert to LaTeX</button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection">
+                <h2>Results</h2>
+                
+                <!-- Loading Spinner -->
+                <div id="loadingSpinner" class="loading-spinner hidden">
+                    <div class="spinner"></div>
+                    <p>Processing your expression...</p>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message hidden">
+                    <span class="error-icon">⚠️</span>
+                    <p id="errorText"></p>
+                </div>
+
+                <!-- LaTeX Output -->
+                <div id="latexOutput" class="latex-output hidden">
+                    <div class="output-section">
+                        <h3>LaTeX Code</h3>
+                        <div class="code-container">
+                            <pre id="latexCode"></pre>
+                            <button id="copyBtn" class="copy-btn" title="Copy to clipboard">📋</button>
+                        </div>
+                    </div>
+
+                    <div class="output-section">
+                        <h3>Rendered Expression</h3>
+                        <div id="renderedLatex" class="rendered-latex"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <h3>⚙️ API Settings</h3>
+            <div class="setting-group">
+                <label for="apiUrl">Server URL:</label>
+                <input type="text" id="apiUrl" value="http://localhost:8080/predict" placeholder="http://localhost:8080/predict">
+            </div>
+            <div class="setting-group">
+                <label for="promptText">Prompt:</label>
+                <textarea id="promptText" rows="2" placeholder="Enter prompt for the model">Convert this handwritten mathematical expression to LaTeX format. Only output the LaTeX code without any explanation.</textarea>
+            </div>
+            <button id="testConnectionBtn" class="btn btn-secondary">🔗 Test Connection</button>
+        </div>
+
+        <footer>
+            <p>Powered by Qwen3-VL Model | Built with ❤️ for CROHME</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
